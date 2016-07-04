@@ -1,0 +1,26 @@
+{
+    "name": "custom print page",
+    "description": "Adds a print button to the browser.",
+    "version": "1.1",
+    "background": {
+        "scripts": ["background.js", "jquery.js"]
+    },
+    "permissions": ["contextMenus","activeTab", "storage", "contentSettings", "tabs", "http://*/*", "https://*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["http://*/*"],
+            "run_at": "document_start",
+            "all_frames": true,
+            "js": [
+                "jquery.js",
+                "print.js"
+            ]
+        }
+    ],
+    "browser_action": {
+        "default_title": "Print this page",
+        "default_icon": "print_16x16.png"
+    },
+    "manifest_version": 2
+}
