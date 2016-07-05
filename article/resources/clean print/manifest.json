@@ -1,5 +1,5 @@
 {
-    "name": "Print this page",
+    "name": "custom print page",
     "description": "Adds a print button to the browser.",
     "version": "1.1",
     "background": {
@@ -12,14 +12,15 @@
             "matches": ["http://*/*"],
             "run_at": "document_start",
             "all_frames": true,
+            "css": ["clean.css"],
             "js": [
                 "jquery.js",
-                "print.js"
+                "clean.js"
             ]
         }
     ],
     "browser_action": {
-        "default_title": "Print this page",
+        "default_title": "Clean and Print page",
         "default_icon": "print_16x16.png"
     },
     "manifest_version": 2

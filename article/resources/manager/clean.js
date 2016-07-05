@@ -14,20 +14,31 @@ function hello() {
     window.print();
 }
 chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
-    cleanPage();
+    if (request.event === 'openCleanModel') {
+        cleanPage();
+    } else if (request.event === 'removeSelect') {
+        removeSelect();
+    } else {
+        console.log(request.event);
+    }
 });
-
+function removeSelect() {
+    $('.cleanContent').each(function () {
+        console.log($(this).attr("class"));
+    });
+}
 function cleanPage() {
     $('a').click(function (e) {
         e.preventDefault();
     });
     $('body').children().off();
-    $('div,span,button,link,a,img').each(function () {
+    $('body *').each(function () {
         $(this).mouseover(function (e) {
             e.stopPropagation();
             $('.overBorder').removeClass("overBorder").unbind('dblclick');
             $(e.target).addClass("overBorder").dblclick(function (e) {
-                $(this).addClass('cleanContent');
+                $(this).addClass('cleanContent').find('.cleanContent').removeClass("cleanContent");
+                $(this).parents(".cleanContent").removeClass("cleanContent");
 //                $(this).remove();
             });
         });
