@@ -7,7 +7,7 @@ function testdblclick() {
     alert(this);
 }
 function loadCss() {
-    $("<link>").attr({rel: "stylesheet", type: "text/css", href: "http://ext.primefaces.cn/print.css"}).appendTo("head");
+   // $("<link>").attr({rel: "stylesheet", type: "text/css", href: "http://ext.primefaces.cn/print.css"}).appendTo("head");
 }
 function hello() {
     console.log('test' + $('head').text());
